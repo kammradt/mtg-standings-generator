@@ -11,7 +11,8 @@ links = [
 reports = links.map do |link|
   scrapper = MTGTop8Scrapper.new(link)
   scrapper.generate_report
-  puts scrapper.report
+
+  scrapper.report
 end
 
 reports.each do |report|

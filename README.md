@@ -25,6 +25,16 @@
 
 ![img.png](assets/demo1.jpg)
 
+
+### Demo
+
+
+https://user-images.githubusercontent.com/34798570/221459941-5337a04b-6a6f-451e-9a70-0bbe5ae10b88.mov
+
+
+
+
+
 ## How it works?
 1. 🛠 Scrape data from mtgtop8.com with [MTGTop8 Scrapper](https://github.com/kammradt/mtgtop8-scrapper)
 2. 💹 Create a template at [https://renderform.io/](https://renderform.io/)
@@ -59,6 +69,7 @@
 ```sh
 # This gem is required to get data and then turn it into images
 gem install mtgtop8_scrapper
+gem install dotenv
 ```
 
 ## Usage
@@ -72,9 +83,13 @@ gem install mtgtop8_scrapper
 5. Grab your API key
    1. fill the .env with RENDER_FORM_API_KEY=your-api-kley
 
-> Now, feel free to copy the code from the app.rb file or look at it below
+> Now, feel free to copy the code from the app.rb file or look at it below.  
+> Also, feel free to verify lib/render_form.rb and change as you prefer ❣️
+> 
 
 ```ruby
+# frozen_string_literal: true
+
 require 'mtgtop8_scrapper'
 require 'json'
 require_relative 'lib/render_form'
@@ -86,7 +101,8 @@ links = [
 reports = links.map do |link|
   scrapper = MTGTop8Scrapper.new(link)
   scrapper.generate_report
-  puts scrapper.report
+
+  scrapper.report
 end
 
 reports.each do |report|
@@ -101,7 +117,6 @@ reports.each do |report|
     puts response.message
   end
 end
-
 ```
 
 
